@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Punten Ranglijst</h1>
+
+<table class=" = "contenteditable=" table-bordered" style=" width: 100%">
+    <thead>
+
+        <tr>
+
+            <th>
+
+                Id
+
+            </th>
+
+            <th>
+                 Rang
+            </th>
+
+            <th>
+                Naam
+            </th>
+
+            <th>
+                Points
+            </th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.Id
+                </td>
+                <td width=" 30%">
+                    @obj.Rang
+                </td>
+                <td width="30%">
+                    @obj.Naam
+                </td>
+                <td width="30%">
+                    @obj.Points
+                </td>
+
+            </tr>
+        }
+
+
+    </tbody>
+
+</table>
+
