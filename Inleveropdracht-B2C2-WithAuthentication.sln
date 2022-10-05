@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inleveropdracht-B2C2-WithAuthentication", "Inleveropdracht-B2C2-WithAuthentication\Inleveropdracht-B2C2-WithAuthentication.csproj", "{CFB3818D-914C-4F8A-B750-0FEB92D76317}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inleveropdracht B2C2", "..\..\..\Desktop\Inleveropdracht-B2C2\Inleveropdracht B2C2\Inleveropdracht B2C2.csproj", "{0A7CC157-7E86-4C91-B440-8A58739B65EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CFB3818D-914C-4F8A-B750-0FEB92D76317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFB3818D-914C-4F8A-B750-0FEB92D76317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFB3818D-914C-4F8A-B750-0FEB92D76317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7CC157-7E86-4C91-B440-8A58739B65EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7CC157-7E86-4C91-B440-8A58739B65EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7CC157-7E86-4C91-B440-8A58739B65EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7CC157-7E86-4C91-B440-8A58739B65EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
