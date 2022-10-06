@@ -1,0 +1,43 @@
+﻿@model Inleveropdracht_B2C2_WithAuthentication.Models.Camera
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Camera</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gebruiker)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gebruiker)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Soort)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Soort)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Plaats)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Plaats)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Omschrijving)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
