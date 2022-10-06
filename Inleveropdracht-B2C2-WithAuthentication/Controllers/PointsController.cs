@@ -22,18 +22,18 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
         // GET: Points
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Puntens.ToListAsync());
+              return View(await _context.Points.ToListAsync());
         }
 
         // GET: Points/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Puntens == null)
+            if (id == null || _context.Points == null)
             {
                 return NotFound();
             }
 
-            var punten = await _context.Puntens
+            var punten = await _context.Points
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (punten == null)
             {
@@ -68,12 +68,12 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
         // GET: Points/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Puntens == null)
+            if (id == null || _context.Points == null)
             {
                 return NotFound();
             }
 
-            var punten = await _context.Puntens.FindAsync(id);
+            var punten = await _context.Points.FindAsync(id);
             if (punten == null)
             {
                 return NotFound();
@@ -119,12 +119,12 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
         // GET: Points/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Puntens == null)
+            if (id == null || _context.Points == null)
             {
                 return NotFound();
             }
 
-            var punten = await _context.Puntens
+            var punten = await _context.Points
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (punten == null)
             {
@@ -139,14 +139,14 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Puntens == null)
+            if (_context.Points == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Puntens'  is null.");
             }
-            var punten = await _context.Puntens.FindAsync(id);
+            var punten = await _context.Points.FindAsync(id);
             if (punten != null)
             {
-                _context.Puntens.Remove(punten);
+                _context.Points.Remove(punten);
             }
             
             await _context.SaveChangesAsync();
@@ -155,7 +155,7 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
 
         private bool PuntenExists(int id)
         {
-          return _context.Puntens.Any(e => e.Id == id);
+          return _context.Points.Any(e => e.Id == id);
         }
     }
 }
