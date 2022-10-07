@@ -9,6 +9,7 @@ using Inleveropdracht_B2C2_WithAuthentication.Data;
 using Inleveropdracht_B2C2_WithAuthentication.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
 {
@@ -16,12 +17,14 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         AppUser? _currentAppUser;
 
-        public CamerasController(ApplicationDbContext context, UserManager<AppUser> userManager)
+        public CamerasController(ApplicationDbContext context, UserManager<AppUser> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _userManager = userManager;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Cameras
@@ -64,11 +67,19 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Gebruiker,Soort,Plaats,Omschrijving")] Camera camera)
+        public async Task<IActionResult> Create([Bind("Naam,Soort,Plaats,Omschrijving,CameraImage")] Camera camera)
         {
             _currentAppUser = await _userManager.GetUserAsync(User);
             if (ModelState.IsValid)
             {
+                if (camera.CameraImage != null)
+                {
+                    string folder = "camera\\";
+                    folder += Guid.NewGuid().ToString() + "_" + camera.CameraImage.FileName;
+                    string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+                    await camera.CameraImage.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                    camera.CameraImageUrl = "/" + folder;
+                }
                 camera.AppUserId = _currentAppUser.Id;
                 camera.AppUser = _currentAppUser;
                 _currentAppUser.Punten += 100;
@@ -101,7 +112,7 @@ namespace Inleveropdracht_B2C2_WithAuthentication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Gebruiker,Soort,Plaats,Omschrijving")] Camera camera)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naam,Soort,Plaats,Omschrijving")] Camera camera)
         {
             if (id != camera.Id)
             {
