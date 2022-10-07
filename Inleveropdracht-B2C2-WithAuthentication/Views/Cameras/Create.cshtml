@@ -7,15 +7,17 @@
 
 <h1>Rapporteer Camera's</h1>
 
+<p1><center><iframe src="https://tinyurl.com/3tme33mf" width="600" height="450" style="border0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></center></p1>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Gebruiker" class="control-label"></label>
-                <input asp-for="Gebruiker" class="form-control" />
-                <span asp-validation-for="Gebruiker" class="text-danger"></span>
+                <label asp-for="Naam" class="control-label"></label>
+                <input asp-for="Naam" class="form-control" />
+                <span asp-validation-for="Naam" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Soort" class="control-label"></label>
@@ -33,15 +35,27 @@
                 <span asp-validation-for="Omschrijving" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="CameraImage" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="CameraImage" class="custom-file-input" id="customFile" />
+                    <label class="custom-file-label" for="customFile">Choose File</label>
+                </div>
+                <span asp-validation-for="CameraImage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
         </form>
+
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Terug naar Lijst</a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
